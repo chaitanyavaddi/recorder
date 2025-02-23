@@ -1,5 +1,4 @@
 import { resolve } from 'path';
-
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import type { ViteDevServer } from 'vite';
@@ -14,6 +13,7 @@ export default defineConfig({
         server.middlewares.use((_req, res, next) => {
           res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
           res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+          res.setHeader('Permissions-Policy', 'camera=*, microphone=*, display-capture=*');
           next();
         });
       },
